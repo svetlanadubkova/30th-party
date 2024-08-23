@@ -33,7 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* Sticky Header */
         #sticky-header {
             position: fixed;
             top: 0;
@@ -57,7 +56,6 @@
             50% { background-color: var(--text-color); color: var(--bg-color); }
         }
 
-        /* Grid Layout */
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -75,7 +73,6 @@
             grid-column: 1 / -1;
         }
 
-        /* Typography */
         h1, h2, h3, h4 {
             margin: 0 0 1rem 0;
             text-transform: uppercase;
@@ -86,10 +83,9 @@
             font-weight: bold;
         }
 
-        /* Image */
         .image-container {
             width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%;
             position: relative;
             overflow: hidden;
         }
@@ -103,7 +99,6 @@
             object-fit: cover;
         }
 
-        /* Alignment */
         .text-left {
             text-align: left;
         }
@@ -112,14 +107,12 @@
             text-align: right;
         }
 
-        /* Accent Line */
         .accent-line {
             height: 2px;
             background-color: var(--accent-color);
             margin: 10px 0;
         }
 
-        /* Interactive Elements */
         a, button {
             color: var(--text-color);
             text-decoration: none;
@@ -130,7 +123,6 @@
             color: var(--accent-color);
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
@@ -146,7 +138,6 @@
             padding: 2rem;
         }
 
-        /* Flashing Background */
         .flashing-bg {
             animation: flash 0.5s infinite;
         }
@@ -156,7 +147,6 @@
             50% { background-color: var(--text-color); }
         }
 
-        /* Logo */
         .logo {
             font-size: clamp(3rem, 8vw, 6rem);
             line-height: 1;
@@ -178,7 +168,6 @@
             letter-spacing: 0.1em;
         }
 
-        /* Animated Text */
         .animated-text-container {
             height: 3rem;
             margin-bottom: 2rem;
@@ -205,7 +194,6 @@
             transform: translateY(-100%);
         }
 
-        /* Luma Button */
         .luma-checkout--button {
             display: inline-block;
             padding: 1rem 2rem;
@@ -223,7 +211,6 @@
             color: var(--text-color) !important;
         }
 
-        /* Scrolling Text */
         .scrolling-text {
             white-space: nowrap;
             animation: scroll 20s linear infinite;
@@ -258,7 +245,6 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* Requirements List */
         .requirements-container {
             display: flex;
             justify-content: space-around;
@@ -303,7 +289,6 @@
             color: var(--accent-color);
         }
 
-        /* Big Three Oh Section */
         .big-three-oh h2 {
             font-size: clamp(4rem, 15vw, 10rem);
             text-align: left;
@@ -313,7 +298,6 @@
             text-align: right;
         }
 
-        /* Dress Code Section */
         .dress-code-section {
             background-image: url('dresscode.jpg');
             background-size: cover;
@@ -321,7 +305,6 @@
             color: var(--text-color);
         }
 
-        /* GIF Section */
         .gif-section {
             background-image: url('newgif.gif');
             background-size: cover;
@@ -330,7 +313,6 @@
             height: 100vh;
         }
 
-        /* Partnership Logos */
         .partnership-logos {
             display: flex;
             justify-content: center;
@@ -344,7 +326,6 @@
             height: auto;
         }
 
-        /* Chatbot Styles */
         .chatbot-container {
             position: fixed;
             bottom: 20px;
@@ -477,7 +458,6 @@
             color: white;
         }
 
-        /* Loading Animation */
         .loading-animation {
             display: none;
             justify-content: center;
@@ -507,7 +487,6 @@
             50% { transform: scale(1.5); }
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .chatbot-container {
                 width: 100%;
@@ -525,8 +504,32 @@
                 border-radius: 25px;
             }
         }
+
+        #play-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: var(--accent-color);
+            color: var(--bg-color); /* Changed to black */
+            border: none;
+            border-radius: 50%;
+            width: 30px; /* Reduced size */
+            height: 30px; /* Reduced size */
+            font-size: 14px; /* Reduced size */
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
     </style>
-    
 </head>
 <body>
     <div id="sticky-header">
@@ -682,14 +685,15 @@
         </div>
     </div>
 
-    <audio id="background-music" autoplay loop>
+    <audio id="background-music" loop>
         <source src="charli.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
+    <button id="play-button">▶</button>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"></script>
     <script>
-        // Countdown timer
         function updateCountdown() {
             const eventDate = new Date('September 20, 2024 19:00:00').getTime();
             const now = new Date().getTime();
@@ -711,15 +715,28 @@
 
         const countdownTimer = setInterval(updateCountdown, 1000);
 
-        // Play audio immediately
-        window.addEventListener('DOMContentLoaded', function() {
-            const audioPlayer = document.getElementById('background-music');
-            audioPlayer.play().catch(function(error) {
+        const audioPlayer = document.getElementById('background-music');
+        const playButton = document.getElementById('play-button');
+
+        function attemptPlay() {
+            audioPlayer.play().then(() => {
+                console.log("Audio playback started successfully");
+                playButton.style.display = 'none';
+            }).catch((error) => {
                 console.log("Audio playback failed: ", error);
+                playButton.style.display = 'flex';
             });
+        }
+
+        window.addEventListener('load', attemptPlay);
+        document.addEventListener('click', attemptPlay);
+        document.addEventListener('touchstart', attemptPlay);
+
+        playButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            attemptPlay();
         });
 
-        // Animated text section
         const animatedTexts = document.querySelectorAll('.animated-text');
         let currentTextIndex = 0;
 
@@ -729,25 +746,20 @@
             animatedTexts[currentTextIndex].classList.add('active');
         }
 
-        // Initialize the first text as active
         animatedTexts[0].classList.add('active');
-
-        // Change text every 2 seconds
         setInterval(changeAnimatedText, 2000);
 
-        // Ensure audio keeps playing when scrolling to GIF section
         const gifSection = document.querySelector('.gif-section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    document.getElementById('background-music').play();
+                    attemptPlay();
                 }
             });
         }, { threshold: 0.5 });
 
         observer.observe(gifSection);
 
-        // Parallax effect for sections
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('.section');
             sections.forEach((section, index) => {
@@ -757,7 +769,6 @@
             });
         });
 
-        // Chatbot functionality
         const chatbotContainer = document.getElementById('chatbot-container');
         const chatbotHeader = document.getElementById('chatbot-header');
         const chatbotToggle = document.getElementById('chatbot-toggle');
