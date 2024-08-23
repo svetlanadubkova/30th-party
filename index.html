@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lana and Kristen Turn 30</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color-1: #ffffff;
-            --bg-color-2: #000000;
-            --text-color-1: #000000;
-            --text-color-2: #ffffff;
+            --bg-color: #000000;
+            --text-color: #ffffff;
             --accent-color: #ff0000;
         }
 
@@ -18,155 +17,145 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            overflow-x: hidden;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.4;
-            background-color: var(--bg-color-2);
-            color: var(--text-color-2);
+            overflow-x: hidden;
         }
 
-        .section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 4rem 2rem;
+        /* Sticky Header */
+        #sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 5px 0;
+            font-size: 0.8rem;
+            z-index: 1000;
             text-align: center;
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-short {
-            min-height: auto;
-            padding: 2rem;
-        }
-
-        .section:nth-child(odd) {
-            background-color: var(--bg-color-1);
-            color: var(--text-color-1);
-        }
-
-        .section:nth-child(even) {
-            background-color: var(--bg-color-2);
-            color: var(--text-color-2);
-        }
-
-        h1, h2, h3, h4 {
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            animation: flashHeader 1s infinite;
+            height: 20px;
+            line-height: 20px;
             font-family: 'Playfair Display', serif;
-        }
-
-        p, li, a {
-            margin-bottom: 0.5rem;
-            text-transform: lowercase;
-        }
-
-        .lowercase {
-            text-transform: lowercase;
             font-style: italic;
         }
 
-        /* Section 1 */
-        #section1 {
-            background-color: var(--accent-color);
-            color: var(--text-color-2);
-            justify-content: flex-start;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
+        @keyframes flashHeader {
+            0%, 100% { background-color: var(--bg-color); color: var(--text-color); }
+            50% { background-color: var(--text-color); color: var(--bg-color); }
         }
 
-        #section1 h1 {
-            font-size: clamp(3rem, 5vw, 8rem);
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-item {
+            padding: 20px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
             margin: 0 0 1rem 0;
-            line-height: 1;
-            font-weight: bold;
-        }
-
-        #section1 .image-container {
-            width: 100%;
-            max-width: 500px;
-            margin: 2rem 0;
-            position: relative;
-        }
-
-        #section1 .image-container img {
-            width: 100%;
-            height: auto;
-        }
-
-        #section1 .event-details {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
         }
 
-        #section1 .event-time {
-            font-size: clamp(4rem, 12vw, 10rem);
+        h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
             font-weight: bold;
-            margin-bottom: 1rem;
         }
 
-        #section1 .horizontal-line {
+        /* Image */
+        .image-container {
             width: 100%;
-            max-width: 500px;
-            height: 1px;
-            background-color: var(--text-color-2);
-            margin: 1rem 0;
-        }
-
-        #countdown {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            margin: 1rem 0;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        /* Section 2 */
-        #section2 {
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
             position: relative;
             overflow: hidden;
-            min-height: auto;
-            padding: 2rem;
         }
 
-        .flashing-bg {
+        .image-container img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            object-fit: cover;
+        }
+
+        /* Alignment */
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        /* Accent Line */
+        .accent-line {
+            height: 2px;
+            background-color: var(--accent-color);
+            margin: 10px 0;
+        }
+
+        /* Interactive Elements */
+        a, button {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover, button:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section-short {
+            padding: 2rem;
+        }
+
+        /* Flashing Background */
+        .flashing-bg {
             animation: flash 0.5s infinite;
         }
 
         @keyframes flash {
-            0%, 100% { background-color: var(--bg-color-2); }
-            50% { background-color: var(--bg-color-1); }
+            0%, 100% { background-color: var(--bg-color); }
+            50% { background-color: var(--text-color); }
         }
 
-        .sponsor-text {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            z-index: 2;
-            position: relative;
-        }
-
+        /* Logo */
         .logo {
-            position: relative;
-            z-index: 2;
             font-size: clamp(3rem, 8vw, 6rem);
-            margin-bottom: 1rem;
             line-height: 1;
             animation: textColorChange 0.5s infinite;
         }
 
         @keyframes textColorChange {
-            0%, 100% { color: var(--text-color-2); }
-            50% { color: var(--text-color-1); }
+            0%, 100% { color: var(--text-color); }
+            50% { color: var(--bg-color); }
         }
 
         .logo-underage {
@@ -179,55 +168,12 @@
             letter-spacing: 0.1em;
         }
 
-        .additional-sponsors {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            z-index: 2;
-            position: relative;
-        }
-
-        /* Section 3 */
-        #section3 {
-            align-items: flex-start;
-            text-align: left;
-        }
-
-        #section3 ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        #section3 li {
-            text-decoration: underline;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        #section3 li::before {
-            content: "✓ ";
-        }
-
-        /* Animated Section */
-        #animated-section {
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            overflow: hidden;
-            background-color: var(--bg-color-2);
-            color: var(--text-color-2);
-            padding: 2rem;
-        }
-
+        /* Animated Text */
         .animated-text-container {
             height: 3rem;
             margin-bottom: 2rem;
             position: relative;
             overflow: hidden;
-            width: 100%;
-            text-align: center;
         }
 
         .animated-text {
@@ -235,9 +181,8 @@
             opacity: 0;
             transform: translateY(100%);
             transition: opacity 0.5s, transform 0.5s;
-            font-style: italic;
             width: 100%;
-            text-align: center;
+            font-style: italic;
         }
 
         .animated-text.active {
@@ -250,58 +195,53 @@
             transform: translateY(-100%);
         }
 
-        /* Section 4 */
-        #section4 h2 {
-            font-size: clamp(3rem, 10vw, 8rem);
-            margin-bottom: 1rem;
+        /* Luma Button */
+        .luma-checkout--button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            background-color: var(--text-color) !important;
+            color: var(--accent-color) !important;
+            border: 2px solid var(--text-color);
+            transition: all 0.3s ease;
+            margin: 1rem auto;
+            border-radius: 50px;
         }
 
-        #section4 p {
-            display: inline;
+        .luma-checkout--button:hover {
+            background-color: var(--accent-color) !important;
+            color: var(--text-color) !important;
         }
 
-        #section4 p:first-of-type {
-            text-decoration: underline;
-        }
-
-        #section4 .bold {
-            font-weight: bold;
-        }
-
-        #section4 .red-text {
-            color: var(--accent-color);
-        }
-
-        /* Section 5 */
-        #section5 {
-            justify-content: center;
-            align-items: flex-start;
-            text-align: left;
-            min-height: 70vh;
-        }
-
-        #section5 h2 {
-            font-size: clamp(4rem, 15vw, 10rem);
-            line-height: 1;
-            margin: 0;
-            text-align: left;
-        }
-
-        #section5 p {
-            text-align: right;
-            width: 100%;
-        }
-
-        /* Section 5.5 */
-        #section5-5 {
-            overflow: hidden;
-            padding: 1rem 0;
-        }
-
+        /* Scrolling Text */
         .scrolling-text {
             white-space: nowrap;
             animation: scroll 10s linear infinite;
-            font-size: clamp(1rem, 3vw, 2rem);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scrolling-text::before, .scrolling-text::after {
+            content: attr(data-text);
+            position: absolute;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .scrolling-text::before {
+            left: 100%;
+            animation: scroll 10s linear infinite;
+        }
+
+        .scrolling-text::after {
+            left: 0;
+            animation: scroll 10s linear infinite;
+        }
         }
 
         @keyframes scroll {
@@ -309,19 +249,7 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* Section 6 (Speed Dating) */
-        #section6 {
-            background-color: var(--bg-color-2);
-            color: var(--text-color-2);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        #section6 h3 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 1rem;
-        }
-
+        /* Requirements List */
         .requirements-container {
             display: flex;
             justify-content: space-around;
@@ -335,14 +263,8 @@
             min-width: 300px;
             margin: 0.5rem;
             padding: 0.5rem;
-            border: 1px solid var(--text-color-2);
+            border: 1px solid var(--text-color);
             border-radius: 10px;
-        }
-
-        .requirements-list h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-color);
         }
 
         .requirements-list ul {
@@ -353,15 +275,13 @@
 
         .requirements-list li {
             margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            position: relative;
             padding-left: 1.2rem;
+            position: relative;
         }
 
         .requirements-list li::before {
             position: absolute;
             left: 0;
-            top: 0.25em;
         }
 
         .about-you li::before {
@@ -374,124 +294,84 @@
             color: var(--accent-color);
         }
 
-        /* Luma Button Styling */
-        .luma-checkout--button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            font-size: 1.5rem;
-            text-decoration: none;
-            background-color: var(--text-color-2) !important;
-            color: var(--accent-color) !important;
-            border: 2px solid var(--text-color-2);
-            transition: all 0.3s ease;
-            margin: 1rem 0;
-            text-transform: lowercase;
-            border-radius: 50px;
-            z-index: 10;
-            position: relative;
+        /* Big Three Oh Section */
+        .big-three-oh h2 {
+            font-size: clamp(4rem, 15vw, 10rem);
+            text-align: left;
         }
 
-        .luma-checkout--button:hover {
-            background-color: var(--accent-color) !important;
-            color: var(--text-color-2) !important;
+        .big-three-oh p {
+            text-align: right;
         }
 
-        /* Section 7 */
-        #section7 {
-            background-image: url('newgif.gif');
-            background-size: fit;
-            background-position: center;
-            height: 100vh;
-            width: 100vw;
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Section 8 */
-        #section8 {
-            padding: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .scrolling-links {
-            white-space: nowrap;
-            animation: scroll 20s linear infinite;
-        }
-
-        .scrolling-links a {
-            text-decoration: underline;
-            margin-right: 1rem;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .section {
-                padding: 3rem 1rem;
-            }
-            .requirements-container {
-                flex-direction: column;
-            }
-        }
-
-        /* Parallax effect */
-        .parallax-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        /* Dress Code Section */
+        .dress-code-section {
+            background-image: url('dresscode.jpg');
             background-size: cover;
             background-position: center;
-            z-index: -1;
-            transform: translateZ(-1px) scale(2);
+            color: var(--text-color);
+        }
+
+        /* GIF Section */
+        .gif-section {
+            background-image: url('newgif.gif');
+            background-size: cover;
+            background-repeat: repeat;
+            background-position: center;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
-    <section id="section1" class="section">
-        <div class="parallax-bg" style="background-image: url('background1.jpg');"></div>
-        <h1>YOU'RE INVITED: LANA & KRISTEN TURN 30</h1>
-        <div class="image-container">
-            <img src="sasha.jpg" alt="Lana and Kristen">
-        </div>
-        <div class="event-details">
-            RUSSIAN SASS MEETS ITALIAN CLASS: SEPTEMBER 20 2024
-        </div>
-        <div class="event-time">7PM</div>
-        <div class="horizontal-line"></div>
+    <div id="sticky-header">
         <div id="countdown"></div>
-        <div class="horizontal-line"></div>
-    </section>
+    </div>
 
-    <section id="section2" class="section" style="background-position-y: 0px;">
-        <div class="flashing-bg"></div>
-        <p class="sponsor-text">sponsored by</p>
-        <div class="logo">
-            <span class="logo-underage lowercase">underage</span><br>
+    <div class="grid-container">
+        <div class="grid-item">
+            <h1>YOU'RE INVITED</h1>
+        </div>
+        <div class="grid-item text-right"></div>
+        <div class="grid-item full-width image-container">
+            <img src="putin.jpg" alt="Lana and Kristen">
+        </div>
+        <div class="grid-item text-left">
+            <p>RUSSIAN SASS MEETS ITALIAN CLASS: LANA & KRISTEN TURN 30</p>
+        </div>
+        <div class="grid-item text-right">
+            <p>SEPTEMBER 20 2024</p>
+            <p>7PM</p>
+        </div>
+    </div>
+
+    <div class="accent-line"></div>
+
+    <section class="section flashing-bg">
+        <p>sponsored by</p>
+        <a href="https://underageandoverserved.com" target="_blank" class="logo">
+            <span class="logo-underage">underage</span><br>
             <span class="logo-overserved">&amp; overserved</span>
-        </div>
-        <a href="https://underageandoverserved.com" target="_blank">underageandoverserved.com</a>
-        <div class="additional-sponsors">
-            <p>in partnership with:</p>
-            <p>natty daddy, <a href="https://www.investingforfreaks.com" target="_blank">creatives on fi(re)</a>, <a href="https://telos.haus" target="_blank">telos.haus</a></p>
+        </a>
+        <div>
+            <p style="font-family: 'Playfair Display', serif; font-style: italic;">in partnership with:</p>
+            <p style="font-family: 'Playfair Display', serif; font-style: italic;">natty daddy, <a href="https://www.investingforfreaks.com" target="_blank">creatives on fi(re)</a>, <a href="https://telos.haus" target="_blank">telos.haus</a></p>
         </div>
     </section>
 
-    <section id="section3" class="section section-short" style="background-position-y: 0px;">
+    <section class="section-short">
         <h2>this is also:</h2>
         <ul>
-            <li>a creatives on fi(re) launch party</li>
-            <li>a di fara pizza party</li>
-            <li>speed dating event</li>
+            <li style="font-family: 'Playfair Display', serif; font-style: italic;">a creatives on fi(re) launch party</li>
+            <li style="font-family: 'Playfair Display', serif; font-style: italic;">a di fara pizza party</li>
+            <li style="font-family: 'Playfair Display', serif; font-style: italic;">speed dating event</li>
         </ul>
     </section>
 
-    <section id="animated-section" class="section-short">
+    <section class="section-short" style="text-align: center;">
         <div class="animated-text-container">
             <div class="animated-text">there will be natty daddies!</div>
             <div class="animated-text">there will be pizza!</div>
-            <div class="animated-text active">there will be a raffle giveaway!</div>
+            <div class="animated-text">there will be a raffle giveaway!</div>
             <div class="animated-text">and some other fun stuff maybe!</div>
         </div>
         <a href="https://lu.ma/event/evt-LIZKqDTWv3EElMF" class="luma-checkout--button" data-luma-action="checkout" data-luma-event-id="evt-LIZKqDTWv3EElMF">
@@ -499,58 +379,62 @@
         </a>
     </section>
 
-    <section id="section4" class="section section-short" style="background-position-y: 0px;">
-        <h2>DRESS CODE</h2>
-        <p>please wear <span class="bold">red, gold, or black</span>. <span class="red-text">failure to adhere to the dress code will result in secret strict consequences - consider this your warning!</span></p>
+    <section class="section-short dress-code-section">
+        <h2 class="text-right">DRESS CODE</h2>
+        <p class="text-left" style="font-family: 'Playfair Display', serif; font-style: italic; background-color: black; display: inline-block; padding: 0.5rem;">please wear red, gold, or black. <span style="background-color: black; color: var(--accent-color);">failure to adhere to the dress code will result in secret strict consequences - consider this your warning!</span></p>
     </section>
-    <section id="section5" class="section" style="background-position-y: 0px;">
+
+    <section class="section big-three-oh">
         <h2>THE BIG THREE OH</h2>
-        <p>this only happens once. well, for kristen it happens twice.</p>
+        <p style="font-family: 'Playfair Display', serif; font-style: italic;">this only happens once. well, for kristen it happens twice.</p>
     </section>
 
-    <section id="section5-5" class="section-short">
-        <div class="scrolling-text lowercase">
+    <section class="section-short" style="background-color: var(--text-color); color: var(--bg-color);">
+        <div class="scrolling-text">
             we're inviting all of the best people we know. and you ;)
+        </div>
     </section>
 
-    <section id="section6" class="section-short">
+    <section class="section-short">
         <h3>🌹 speed dating requirements 🌹</h3>
         <div class="requirements-container">
             <div class="requirements-list about-you">
                 <h4>about you:</h4>
                 <ul>
-                    <li>Charismatic and playful: you keep things light!</li>
-                    <li>Passionate: you are easily excitable, loving and emotional, opinionated (but still keep things light!) and are likely persona non grata in one circle or another!</li>
-                    <li>Thoughtful and high agency</li>
-                    <li>You know that nothing in this life is personal and you try to love thy neighbor not thy in group</li>
-                    <li>Probably a freelancer or entrepreneurial type</li>
-                    <li>Possibly a techofascist or transhumanist!!</li>
-                    <li>Potentially a musician as long as </li>
-                    <li>Financially stable!!!</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">charismatic and playful: you keep things light!</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">passionate: you are easily excitable, loving and emotional, opinionated (but still keep things light!) and are likely persona non grata in one circle or another!</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">thoughtful and high agency</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">you know that nothing in this life is personal and you try to love thy neighbor not thy in group</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">probably a freelancer or entrepreneurial type</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">possibly a techofascist or transhumanist!!</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">potentially a musician as long as </li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">financially stable!!!</li>
                 </ul>
             </div>
             <div class="requirements-list not-you">
                 <h4>not you:</h4>
                 <ul>
-                    <li>No moody and serious brooding types please</li>
-                    <li>No normies please</li>
-                    <li>No Marxists please</li>
-                    <li>No socialists please</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">no moody and serious brooding types please</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">no normies please</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">no marxists please</li>
+                    <li style="font-family: 'Playfair Display', serif; font-style: italic;">no socialists please</li>
                 </ul>
             </div>
         </div>
-        <a href="https://lu.ma/event/evt-LIZKqDTWv3EElMF" class="luma-checkout--button" data-luma-action="checkout" data-luma-event-id="evt-LIZKqDTWv3EElMF">
-            🔪 rsvp for location 🔪
-        </a>
+        <div style="text-align: center;">
+            <a href="https://lu.ma/event/evt-LIZKqDTWv3EElMF" class="luma-checkout--button" data-luma-action="checkout" data-luma-event-id="evt-LIZKqDTWv3EElMF">
+                🔪 rsvp for location 🔪
+            </a>
+        </div>
     </section>
 
-    <section id="section7" class="section" style="background-position-y: 0px;">
+    <section class="section gif-section">
         <!-- GIF background, no text -->
     </section>
 
-    <section id="section8" class="section-short">
-        <p class="lowercase">for the purposes of ess ee oh, we are linking all of lana's websites below hehe️</p>
-        <div class="scrolling-links lowercase">
+    <section class="section-short">
+        <p>for the purposes of ess ee oh, we are linking all of lana's websites below hehe️</p>
+        <div class="scrolling-text">
             <a href="https://manhattaneventphotography.com" target="_blank">manhattaneventphotography.com</a>
             <a href="https://manhattanpartyphotographer.com" target="_blank">manhattanpartyphotographer.com</a>
             <a href="https://brooklynpartyphotographer.com" target="_blank">brooklynpartyphotographer.com</a>
@@ -565,7 +449,7 @@
         </div>
     </section>
 
-    <audio id="background-music" autoplay="" loop="">
+    <audio id="background-music" autoplay loop>
         <source src="charli.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -582,18 +466,19 @@
             const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            const countdownText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            document.getElementById('countdown').innerHTML = countdownText;
 
             if (difference < 0) {
                 clearInterval(countdownTimer);
-                document.getElementById('countdown').innerHTML = 'event has started!';
+                document.getElementById('countdown').innerHTML = 'Event has started!';
             }
         }
 
         const countdownTimer = setInterval(updateCountdown, 1000);
 
         // Play audio immediately
-        window.addEventListener('load', function() {
+        window.addEventListener('DOMContentLoaded', function() {
             const audioPlayer = document.getElementById('background-music');
             audioPlayer.play().catch(function(error) {
                 console.log("Audio playback failed: ", error);
@@ -619,8 +504,8 @@
         // Change text every 2 seconds
         setInterval(changeAnimatedText, 2000);
 
-        // Ensure audio keeps playing when scrolling to Section 7
-        const section7 = document.getElementById('section7');
+        // Ensure audio keeps playing when scrolling to GIF section
+        const gifSection = document.querySelector('.gif-section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -629,7 +514,7 @@
             });
         }, { threshold: 0.5 });
 
-        observer.observe(section7);
+        observer.observe(gifSection);
 
         // Parallax effect for sections
         window.addEventListener('scroll', function() {
@@ -642,5 +527,5 @@
         });
     </script>
     <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
-
-</body></html>
+</body>
+</html>
