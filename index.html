@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lana and Kristen Turn 30</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color-1: #ffffff;
+            --bg-color-2: #000000;
+            --text-color-1: #000000;
+            --text-color-2: #ffffff;
+            --accent-color: #ff0000;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+            line-height: 1.4;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        .section-short {
+            min-height: auto;
+            padding: 2rem;
+        }
+
+        .section:nth-child(odd) {
+            background-color: var(--bg-color-1);
+            color: var(--text-color-1);
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--bg-color-2);
+            color: var(--text-color-2);
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        p, li, a {
+            margin-bottom: 0.5rem;
+            text-transform: lowercase;
+        }
+
+        .lowercase {
+            text-transform: lowercase;
+            font-style: italic;
+        }
+
+        /* Section 1 */
+        #section1 {
+            background-color: var(--accent-color);
+            color: var(--text-color-2);
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        #section1 h1 {
+            font-size: clamp(3rem, 10vw, 8rem);
+            margin: 0 0 1rem 0;
+            line-height: 1;
+            font-weight: bold;
+        }
+
+        #section1 .image-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem 0;
+        }
+        #section1 .horizontal-line {
+            width: 100%;
+            max-width: 500px;
+            height: 1px;
+            background-color: var(--text-color-2);
+            margin: 1rem 0;
+        }
+        #section1 .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        #section1 .event-details {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: 1rem;
+        }
+
+        #section1 .event-time {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        #section1 h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        #countdown {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-top: 2rem;
+        }
+
+        /* Section 2 */
+        #section2 {
+            position: relative;
+            overflow: hidden;
+            min-height: auto;
+            padding: 2rem;
+        }
+
+        .flashing-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            animation: flash 0.5s infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% { background-color: var(--bg-color-2); }
+            50% { background-color: var(--bg-color-1); }
+        }
+
+        .sponsor-text {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .logo {
+            position: relative;
+            z-index: 2;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            line-height: 1;
+            animation: textColorChange 0.5s infinite;
+        }
+
+        @keyframes textColorChange {
+            0%, 100% { color: var(--text-color-2); }
+            50% { color: var(--text-color-1); }
+        }
+
+        .logo-underage {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .logo-overserved {
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .additional-sponsors {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Section 3 */
+        #section3 {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        #section3 ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #section3 li {
+            text-decoration: underline;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        #section3 li::before {
+            content: "✓ ";
+        }
+
+        /* Animated Section */
+        #animated-section {
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            overflow: hidden;
+            background-color: var(--bg-color-2);
+            color: var(--text-color-2);
+            padding: 2rem;
+        }
+
+        .animated-text-container {
+            height: 3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+        }
+
+        .animated-text {
+            position: absolute;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.5s, transform 0.5s;
+            font-style: italic;
+            width: 100%;
+            text-align: center;
+        }
+
+        .animated-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animated-text.fade-out {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+
+        /* Section 4 */
+        #section4 h2 {
+            font-size: clamp(3rem, 10vw, 8rem);
+            margin-bottom: 1rem;
+        }
+
+        #section4 p {
+            display: inline;
+        }
+
+        #section4 p:first-of-type {
+            text-decoration: underline;
+        }
+
+        #section4 .bold {
+            font-weight: bold;
+        }
+
+        #section4 .red-text {
+            color: var(--accent-color);
+        }
+
+        /* Section 5 */
+        #section5 {
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            min-height: 70vh;
+        }
+
+        #section5 h2 {
+            font-size: clamp(4rem, 15vw, 10rem);
+            line-height: 1;
+            margin: 0;
+            text-align: left;
+        }
+
+        #section5 p {
+            text-align: right;
+            width: 100%;
+        }
+
+        /* Section 5.5 */
+        #section5-5 {
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .scrolling-text {
+            white-space: nowrap;
+            animation: scroll 10s linear infinite;
+            font-size: clamp(1rem, 3vw, 2rem);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Section 6 (Speed Dating) */
+        #section6 {
+            background-color: var(--bg-color-2);
+            color: var(--text-color-2);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        #section6 h3 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .requirements-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .requirements-list {
+            flex: 1;
+            min-width: 300px;
+            margin: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid var(--text-color-2);
+            border-radius: 10px;
+        }
+
+        .requirements-list h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .requirements-list ul {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: left;
+        }
+
+        .requirements-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .requirements-list li::before {
+            position: absolute;
+            left: 0;
+            top: 0.25em;
+        }
+
+        .about-you li::before {
+            content: "✓";
+            color: var(--accent-color);
+        }
+
+        .not-you li::before {
+            content: "✗";
+            color: var(--accent-color);
+        }
+
+        /* Luma Button Styling */
+        .luma-checkout--button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            background-color: var(--text-color-2) !important;
+            color: var(--accent-color) !important;
+            border: 2px solid var(--text-color-2);
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+            text-transform: lowercase;
+            border-radius: 50px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .luma-checkout--button:hover {
+            background-color: var(--accent-color) !important;
+            color: var(--text-color-2) !important;
+        }
+
+        /* Section 7 */
+        #section7 {
+            background-image: url('newgif.gif');
+            background-size: fit;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Section 8 */
+        #section8 {
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .scrolling-links {
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+
+        .scrolling-links a {
+            text-decoration: underline;
+            margin-right: 1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+            .requirements-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="section1" class="section">
+        <h1>YOU'RE INVITED</h1>
+        <div class="image-container">
+            <img src="sasha.jpg" alt="Lana and Kristen">
+            <div class="event-details">
+                SEPTEMBER 20 2024
+            </div>
+            <div class="event-time">7PM</div>
+            <div class="horizontal-line"></div>
+            <div id="countdown"></div>
+            <div class="horizontal-line"></div>
+        </section>
+
+    <section id="section2" class="section">
+        <div class="flashing-bg"></div>
+        <p class="sponsor-text">sponsored by</p>
+        <div class="logo">
+            <span class="logo-underage lowercase">underage</span><br>
+            <span class="logo-overserved">&amp; overserved</span>
+        </div>
+        <a href="https://underageandoverserved.com" target="_blank">underageandoverserved.com</a>
+        <div class="additional-sponsors">
+            <p>in partnership with:</p>
+            <p>natty daddy, <a href="https://www.investingforfreaks.com" target="_blank">creatives on fi(re)</a>, <a href="https://telos.haus" target="_blank">telos.haus</a></p>
+        </div>
+    </section>
+
+    <section id="section3" class="section section-short">
+        <h2>this is also:</h2>
+        <ul>
+            <li>a creatives on fi(re) launch party</li>
+            <li>a di fara pizza party</li>
+            <li>speed dating event</li>
+        </ul>
+    </section>
+
+    <section id="animated-section" class="section-short">
+        <div class="animated-text-container">
+            <div class="animated-text">there will be natty daddies!</div>
+            <div class="animated-text">there will be pizza!</div>
+            <div class="animated-text">there will be a raffle giveaway!</div>
+            <div class="animated-text">and some other fun stuff maybe!</div>
+        </div>
+        <a href="https://lu.ma/event/evt-LIZKqDTWv3EElMF" class="luma-checkout--button" data-luma-action="checkout" data-luma-event-id="evt-LIZKqDTWv3EElMF">
+            🌹 rsvp for location 🌹
+        </a>
+    </section>
+
+    <section id="section4" class="section section-short">
+        <h2>DRESS CODE</h2>
+        <p>please wear <span class="bold">red, gold, or black</span>. <span class="red-text">failure to adhere to the dress code will result in secret strict consequences - consider this your warning!</span></p>
+    </section>
+
+    <section id="section5" class="section">
+        <h2>THE BIG THREE OH</h2>
+        <p>this only happens once. well, for kristen it happens twice.</p>
+    </section>
+
+    <section id="section5-5" class="section-short">
+        <div class="scrolling-text lowercase">
+            we're inviting all of the best people we know. and you. &lt;3 jk love you
+        </div>
+    </section>
+
+    <section id="section6" class="section-short">
+        <h3>🌹 speed dating requirements 🌹</h3>
+        <div class="requirements-container">
+            <div class="requirements-list about-you">
+                <h4>about you:</h4>
+                <ul>
+                    <li>Charismatic and playful: you keep things light!</li>
+                    <li>Passionate: you are easily excitable, loving and emotional, opinionated (but still keep things light!) and are likely persona non grata in one circle or another!</li>
+                    <li>Thoughtful and high agency</li>
+                    <li>You know that nothing in this life is personal and you try to love thy neighbor not thy in group</li>
+                    <li>Probably a freelancer or entrepreneurial type</li>
+                    <li>Possibly a techofascist or transhumanist!!</li>
+                    <li>Potentially a musician as long as </li>
+                    <li>Financially stable!!!</li>
+                </ul>
+            </div>
+            <div class="requirements-list not-you">
+                <h4>not you:</h4>
+                <ul>
+                    <li>No moody and serious brooding types please</li>
+                    <li>No normies please</li>
+                    <li>No Marxists please</li>
+                    <li>No socialists please</li>
+        
+                </ul>
+            </div>
+        </div>
+        <a href="https://lu.ma/event/evt-LIZKqDTWv3EElMF" class="luma-checkout--button" data-luma-action="checkout" data-luma-event-id="evt-LIZKqDTWv3EElMF">
+            🔪 rsvp for location 🔪
+        </a>
+    </section>
+
+    <section id="section7" class="section">
+        <!-- GIF background, no text -->
+    </section>
+
+    <section id="section8" class="section-short">
+        <p class="lowercase">for the purposes of ess ee oh, we are linking all of lana's websites below hehe️</p>
+        <div class="scrolling-links lowercase">
+            <a href="https://manhattaneventphotography.com" target="_blank">manhattaneventphotography.com</a>
+            <a href="https://manhattanpartyphotographer.com" target="_blank">manhattanpartyphotographer.com</a>
+            <a href="https://brooklynpartyphotographer.com" target="_blank">brooklynpartyphotographer.com</a>
+            <a href="https://underageandoverserved.com" target="_blank">underageandoverserved.com</a>
+            <a href="https://nyceventplanner.xyz" target="_blank">nyceventplanner.xyz</a>
+            <a href="https://nycphotoassistant.com" target="_blank">nycphotoassistant.com</a>
+            <a href="https://investingforfreaks.com" target="_blank">investingforfreaks.com</a>
+            <a href="https://brooklyneventphotographer.com" target="_blank">brooklyneventphotographer.com</a>
+            <a href="https://nycpartyphotographer.com" target="_blank">nycpartyphotographer.com</a>
+            <a href="https://nycphotographyassistant.com" target="_blank">nycphotographyassistant.com</a>
+            <a href="https://newyorkphotoassistant.com" target="_blank">newyorkphotoassistant.com</a>
+        </div>
+    </section>
+
+    <audio id="background-music" autoplay loop>
+        <source src="charli.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Countdown timer
+        function updateCountdown() {
+            const eventDate = new Date('September 20, 2024 19:00:00').getTime();
+            const now = new Date().getTime();
+            const difference = eventDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (difference < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('countdown').innerHTML = 'event has started!';
+            }
+        }
+
+        const countdownTimer = setInterval(updateCountdown, 1000);
+
+        // Play audio immediately
+        window.addEventListener('DOMContentLoaded', function() {
+            const audioPlayer = document.getElementById('background-music');
+            audioPlayer.play().catch(function(error) {
+                console.log("Audio playback failed: ", error);
+            });
+        });
+
+        // Animated text section
+        const animatedTexts = document.querySelectorAll('.animated-text');
+        let currentTextIndex = 0;
+
+        function changeAnimatedText() {
+            animatedTexts[currentTextIndex].classList.add('fade-out');
+            setTimeout(() => {
+                animatedTexts[currentTextIndex].classList.remove('active', 'fade-out');
+                currentTextIndex = (currentTextIndex + 1) % animatedTexts.length;
+                animatedTexts[currentTextIndex].classList.add('active');
+            }, 500);
+        }
+
+        // Initialize the first text as active
+        animatedTexts[0].classList.add('active');
+
+        // Change text every 2 seconds
+        setInterval(changeAnimatedText, 2000);
+
+        // Ensure audio keeps playing when scrolling to Section 7
+        const section7 = document.getElementById('section7');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.getElementById('background-music').play();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(section7);
+
+        // Parallax effect for sections
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                const speed = 0.5;
+                const yPos = -(window.pageYOffset * speed * (index + 1) * 0.1);
+                section.style.backgroundPositionY = yPos + 'px';
+            });
+        });
+    </script>
+    <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
+</body>
+</html>
