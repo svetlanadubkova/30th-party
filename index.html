@@ -242,7 +242,6 @@
             left: 0;
             animation: scroll 10s linear infinite;
         }
-        }
 
         @keyframes scroll {
             0% { transform: translateX(100%); }
@@ -320,6 +319,20 @@
             background-position: center;
             height: 100vh;
         }
+
+        /* Partnership Logos */
+        .partnership-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .partnership-logos img {
+            max-width: 100px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -354,7 +367,11 @@
         </a>
         <div>
             <p style="font-family: 'Playfair Display', serif; font-style: italic;">in partnership with:</p>
-            <p style="font-family: 'Playfair Display', serif; font-style: italic;">natty daddy, <a href="https://www.investingforfreaks.com" target="_blank">creatives on fi(re)</a>, <a href="https://telos.haus" target="_blank">telos.haus</a></p>
+            <div class="partnership-logos">
+                <a href="https://www.nattydaddy.com" target="_blank"><img src="natty.png" alt="Natty Daddy"></a>
+                <a href="https://www.investingforfreaks.com" target="_blank"><img src="creatives on fire.png" alt="Creatives on Fi(re)"></a>
+                <a href="https://telos.haus" target="_blank"><img src="telos.png" alt="Telos Haus"></a>
+            </div>
         </div>
     </section>
 
