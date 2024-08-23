@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lana and Kristen Turn 30</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color-1: #ffffff;
@@ -17,9 +17,11 @@
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Roboto', sans-serif;
             overflow-x: hidden;
             line-height: 1.4;
+            background-color: var(--bg-color-2);
+            color: var(--text-color-2);
         }
 
         .section {
@@ -30,6 +32,8 @@
             padding: 4rem 2rem;
             text-align: center;
             min-height: 100vh;
+            position: relative;
+            overflow: hidden;
         }
 
         .section-short {
@@ -51,6 +55,7 @@
             margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            font-family: 'Playfair Display', serif;
         }
 
         p, li, a {
@@ -74,7 +79,7 @@
         }
 
         #section1 h1 {
-            font-size: clamp(3rem, 10vw, 8rem);
+            font-size: clamp(3rem, 5vw, 8rem);
             margin: 0 0 1rem 0;
             line-height: 1;
             font-weight: bold;
@@ -84,14 +89,9 @@
             width: 100%;
             max-width: 500px;
             margin: 2rem 0;
+            position: relative;
         }
-        #section1 .horizontal-line {
-            width: 100%;
-            max-width: 500px;
-            height: 1px;
-            background-color: var(--text-color-2);
-            margin: 1rem 0;
-        }
+
         #section1 .image-container img {
             width: 100%;
             height: auto;
@@ -100,23 +100,29 @@
         #section1 .event-details {
             font-size: clamp(1rem, 3vw, 1.5rem);
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         #section1 .event-time {
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: clamp(4rem, 12vw, 10rem);
             font-weight: bold;
             margin-bottom: 1rem;
         }
 
-        #section1 h2 {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            margin-bottom: 1rem;
-            font-style: italic;
+        #section1 .horizontal-line {
+            width: 100%;
+            max-width: 500px;
+            height: 1px;
+            background-color: var(--text-color-2);
+            margin: 1rem 0;
         }
 
         #countdown {
             font-size: clamp(1.5rem, 4vw, 2.5rem);
-            margin-top: 2rem;
+            margin: 1rem 0;
+            max-width: 500px;
+            width: 100%;
         }
 
         /* Section 2 */
@@ -393,7 +399,7 @@
         /* Section 7 */
         #section7 {
             background-image: url('newgif.gif');
-            background-size: fit;
+            background-size: cover;
             background-position: center;
             height: 100vh;
             width: 100vw;
@@ -427,23 +433,38 @@
                 flex-direction: column;
             }
         }
+
+        /* Parallax effect */
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transform: translateZ(-1px) scale(2);
+        }
     </style>
 </head>
 <body>
     <section id="section1" class="section">
+        <div class="parallax-bg" style="background-image: url('background1.jpg');"></div>
         <h1>YOU'RE INVITED</h1>
         <div class="image-container">
             <img src="sasha.jpg" alt="Lana and Kristen">
-            <div class="event-details">
-                SEPTEMBER 20 2024
-            </div>
-            <div class="event-time">7PM</div>
-            <div class="horizontal-line"></div>
-            <div id="countdown"></div>
-            <div class="horizontal-line"></div>
-        </section>
+        </div>
+        <div class="event-details">
+            SEPTEMBER 20 2024
+        </div>
+        <div class="event-time">7PM</div>
+        <div class="horizontal-line"></div>
+        <div id="countdown"></div>
+        <div class="horizontal-line"></div>
+    </section>
 
-    <section id="section2" class="section">
+    <section id="section2" class="section" style="background-position-y: 0px;">
         <div class="flashing-bg"></div>
         <p class="sponsor-text">sponsored by</p>
         <div class="logo">
@@ -457,7 +478,7 @@
         </div>
     </section>
 
-    <section id="section3" class="section section-short">
+    <section id="section3" class="section section-short" style="background-position-y: 0px;">
         <h2>this is also:</h2>
         <ul>
             <li>a creatives on fi(re) launch party</li>
@@ -470,7 +491,7 @@
         <div class="animated-text-container">
             <div class="animated-text">there will be natty daddies!</div>
             <div class="animated-text">there will be pizza!</div>
-            <div class="animated-text">there will be a raffle giveaway!</div>
+            <div class="animated-text active">there will be a raffle giveaway!</div>
             <div class="animated-text">and some other fun stuff maybe!</div>
         </div>
         <a href="https://lu.ma/event/evt-LIZKqDTWv3EElMF" class="luma-checkout--button" data-luma-action="checkout" data-luma-event-id="evt-LIZKqDTWv3EElMF">
@@ -478,12 +499,11 @@
         </a>
     </section>
 
-    <section id="section4" class="section section-short">
+    <section id="section4" class="section section-short" style="background-position-y: 0px;">
         <h2>DRESS CODE</h2>
         <p>please wear <span class="bold">red, gold, or black</span>. <span class="red-text">failure to adhere to the dress code will result in secret strict consequences - consider this your warning!</span></p>
     </section>
-
-    <section id="section5" class="section">
+    <section id="section5" class="section" style="background-position-y: 0px;">
         <h2>THE BIG THREE OH</h2>
         <p>this only happens once. well, for kristen it happens twice.</p>
     </section>
@@ -517,7 +537,6 @@
                     <li>No normies please</li>
                     <li>No Marxists please</li>
                     <li>No socialists please</li>
-        
                 </ul>
             </div>
         </div>
@@ -526,7 +545,7 @@
         </a>
     </section>
 
-    <section id="section7" class="section">
+    <section id="section7" class="section" style="background-position-y: 0px;">
         <!-- GIF background, no text -->
     </section>
 
@@ -547,7 +566,7 @@
         </div>
     </section>
 
-    <audio id="background-music" autoplay loop>
+    <audio id="background-music" autoplay="" loop="">
         <source src="charli.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -575,7 +594,7 @@
         const countdownTimer = setInterval(updateCountdown, 1000);
 
         // Play audio immediately
-        window.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
             const audioPlayer = document.getElementById('background-music');
             audioPlayer.play().catch(function(error) {
                 console.log("Audio playback failed: ", error);
@@ -624,5 +643,5 @@
         });
     </script>
     <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
-</body>
-</html>
+
+</body></html>
